@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container">
-    <el-card>
+    <el-card class="hotel-card">
       <el-button
         type="text"
         class="hotel-name"
@@ -8,26 +8,28 @@
         >{{ hotel.name }}</el-button
       >
       <div>Location: {{ hotel.city }}, {{ hotel.country }}</div>
-
       <el-rate disabled :value="hotel.stars"></el-rate>
-      <div v-if="!disableFav">
-        <el-button v-if="isFavorite(hotel)" @click="removeFromFavs(hotel)"
-          ><i class="el-icon-star-on"></i
-        ></el-button>
-        <el-button v-else @click="addToFavs(hotel)"
-          ><i class="el-icon-star-off"></i
-        ></el-button>
+      <el-row class="hotel-description">{{ hotel.description }}</el-row>
+      <div class="flex-container">
+        <div v-if="!disableFav">
+          <el-button v-if="isFavorite(hotel)" @click="removeFromFavs(hotel)"
+            ><i class="el-icon-star-on"></i
+          ></el-button>
+          <el-button v-else @click="addToFavs(hotel)"
+            ><i class="el-icon-star-off"></i
+          ></el-button>
+        </div>
+        <el-button v-if="!hotelId" @click="getHotelReviews(hotel.id)"
+          >Show Reviews</el-button
+        >
+        <el-button v-else @click="hideReviews">Hide Reviews</el-button>
+        <el-button
+          v-if="!disableDetails"
+          type="primary"
+          @click="getHotelInfo(hotel.id)"
+          >Details</el-button
+        >
       </div>
-      <el-button v-if="!hotelId" @click="getHotelReviews(hotel.id)"
-        >Show Reviews</el-button
-      >
-      <el-button v-else @click="hideReviews">Hide Reviews</el-button>
-      <el-button
-        v-if="!disableDetails"
-        type="primary"
-        @click="getHotelInfo(hotel.id)"
-        >Details</el-button
-      >
       <Reviews
         :loaded="loaded"
         v-if="hotelId !== 0 && loaded"

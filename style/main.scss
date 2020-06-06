@@ -25,3 +25,16 @@ body {
 .el-spinner-inner .path {
   stroke: #2196f3;
 }
+
+.login-box, .register-box {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.hotel-card {
+  width: 100%
+}
+.hotel-description {
+  margin: 10px;
+}

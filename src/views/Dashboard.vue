@@ -2,7 +2,6 @@
   <div class="dashboard">
     <Menu />
     <div v-if="loaded" class="container">
-      <el-button @click="addNewHotel">Add Hotel</el-button>
       <div v-for="hotel in hotelsList" :key="hotel.id">
         <Hotel :hotel="hotel" @updateList="loadHotels" />
       </div>
@@ -14,7 +13,7 @@
 <script>
 import { mapActions } from "vuex";
 import Hotel from "../components/Hotel";
-import Menu from "../views/Menu";
+import Menu from "../components/Menu";
 export default {
   name: "Dashboard",
   data() {
@@ -39,9 +38,6 @@ export default {
     ...mapActions(["getHotels", "getReviews"]),
     async loadHotels() {
       await this.getHotels();
-    },
-    addNewHotel() {
-      this.$router.push("/hotels/new");
     }
   }
 };

@@ -15,7 +15,7 @@ export default {
     };
   },
   async created() {
-    //this.checkToken();
+    this.checkToken();
     this.loaded = true;
   },
   methods: {
@@ -23,6 +23,11 @@ export default {
       if (!this.$cookies.get("hotelSymphonyToken")) {
         this.$router.push({ name: "Login" });
       }
+    }
+  },
+  watch: {
+    $route() {
+      this.checkToken();
     }
   }
 };

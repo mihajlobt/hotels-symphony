@@ -9,6 +9,7 @@
     >
       <el-menu-item index="/hotels">Dashboard</el-menu-item>
       <el-menu-item index="/favorites">Favorites</el-menu-item>
+      <el-menu-item index="/hotels/new">Add Hotel</el-menu-item>
       <el-menu-item index="logout">Logout</el-menu-item>
     </el-menu>
   </div>

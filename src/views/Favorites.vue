@@ -13,7 +13,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import Menu from "../views/Menu";
+import Menu from "../components/Menu";
 import Hotel from "../components/Hotel";
 
 export default {
