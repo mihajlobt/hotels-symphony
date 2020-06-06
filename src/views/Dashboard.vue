@@ -31,7 +31,11 @@ export default {
     }
   },
   async created() {
-    await this.getHotels();
+    try {
+      await this.getHotels();
+    } catch (e) {
+      this.$message({ message: "error getting hotels", type: "error" });
+    }
     this.loaded = true;
   },
   methods: {
