@@ -1,6 +1,7 @@
 <template>
   <div class="container register">
     <el-card class="register-box">
+      <el-button @click="$router.push('/')" type="text">Back</el-button>
       <el-form :model="user">
         <el-form-item label="Username">
           <el-input v-model="user.username"></el-input>

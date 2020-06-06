@@ -1,6 +1,7 @@
 <template>
   <div class="container login">
     <el-card class="login-box">
+      <el-button @click="$router.push('/')" type="text">Back</el-button>
       <el-form :model="auth">
         <el-form-item label="Email">
           <el-input v-model="auth.username"></el-input>
