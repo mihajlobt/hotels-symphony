@@ -1,0 +1,27 @@
+/* theme colors */
+$--color-danger: #f44336;
+$--color-warning: #ff9800;
+$--color-primary: #2196f3;
+
+/* icon font path, required */
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
+
+@import "~element-ui/packages/theme-chalk/src/index";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotel-name {
+  font-weight: bold;
+}
+
+.el-spinner-inner .path {
+  stroke: #2196f3;
+}

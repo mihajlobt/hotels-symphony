@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <div v-if="!user">
+      <el-button @click="$router.push('/login')">Login</el-button>
+      <el-button @click="$router.push('/register')">Register</el-button>
+    </div>
+    <router-view v-else></router-view>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
   }
 };
 </script>
+
+<style scoped></style>

@@ -1,0 +1,48 @@
+<template>
+  <div class="dashboard">
+    <Menu />
+    <div v-if="loaded" class="container">
+      <el-button @click="addNewHotel">Add Hotel</el-button>
+      <div v-for="hotel in hotelsList" :key="hotel.id">
+        <Hotel :hotel="hotel" @updateList="loadHotels" />
+      </div>
+    </div>
+    <el-spinner v-else></el-spinner>
+  </div>
+</template>
+
+<script>
+import { mapActions } from "vuex";
+import Hotel from "../components/Hotel";
+import Menu from "../views/Menu";
+export default {
+  name: "Dashboard",
+  data() {
+    return {
+      loaded: false
+    };
+  },
+  components: {
+    Hotel,
+    Menu
+  },
+  computed: {
+    hotelsList() {
+      return this.$store.state.hotels;
+    }
+  },
+  async created() {
+    await this.getHotels();
+    this.loaded = true;
+  },
+  methods: {
+    ...mapActions(["getHotels", "getReviews"]),
+    async loadHotels() {
+      await this.getHotels();
+    },
+    addNewHotel() {
+      this.$router.push("/hotels/new");
+    }
+  }
+};
+</script>
